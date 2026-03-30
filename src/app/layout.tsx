@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ms" className={`${inter.variable} h-full antialiased`}>
-      <head>
+      <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -87,8 +87,8 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+        {children}
+      </body>
     </html>
   );
 }

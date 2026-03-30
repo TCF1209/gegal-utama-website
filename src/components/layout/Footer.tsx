@@ -144,7 +144,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
             <p>
-              &copy; {new Date().getFullYear()} {COMPANY.name}.{" "}
+              &copy; 2025 {COMPANY.name}.{" "}
               {t("footer.copyright")}
             </p>
             <div className="flex gap-4">
