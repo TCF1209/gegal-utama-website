@@ -1,7 +1,7 @@
 export const COMPANY = {
   name: "GEGAL UTAMA SDN BHD",
   phone: "011-53164241",
-  whatsappNumber: "60115316424",
+  whatsappNumber: "601153164241",
   email: "gegalutama@gmail.com",
   address: "162A, Jalan Tasek Timur, Taman Tasek Indra, 31400 Ipoh, Perak",
   facebook: "https://www.facebook.com/share/14YRfB9VnEf/",

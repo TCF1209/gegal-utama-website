@@ -59,7 +59,7 @@ export default function RootLayout({
                 postalCode: "31400",
                 addressCountry: "MY",
               },
-              telephone: "+60115316424",
+              telephone: "+601153164241",
               email: "gegalutama@gmail.com",
               openingHoursSpecification: [
                 {

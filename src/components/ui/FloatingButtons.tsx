@@ -32,7 +32,7 @@ export default function FloatingButtons() {
     >
       {/* WhatsApp Button */}
       <motion.a
-        href="https://wa.me/60115316424?text=Saya%20berminat%20untuk%20tahu%20lebih%20lanjut%20tentang%20pinjaman%20peribadi."
+        href="https://wa.me/601153164241?text=Saya%20berminat%20untuk%20tahu%20lebih%20lanjut%20tentang%20pinjaman%20peribadi."
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t("floating.whatsapp")}
