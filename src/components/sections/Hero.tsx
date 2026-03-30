@@ -32,9 +32,9 @@ export default function Hero() {
           <Image
             src="/images/logo.png"
             alt="Gegal Utama Sdn Bhd"
-            width={120}
-            height={120}
-            className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+            width={240}
+            height={240}
+            className="h-32 w-32 sm:h-40 sm:w-40 lg:h-56 lg:w-56 object-contain"
             priority
           />
         </motion.div>
