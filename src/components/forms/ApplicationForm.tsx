@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion, AnimatePresence } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { STATES, LOAN_AMOUNTS, getWhatsAppUrl } from "@/lib/constants";
 
@@ -20,8 +18,6 @@ const EMPLOYMENT_KEYS = [
 
 export default function ApplicationForm() {
   const { language, t } = useLanguage();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const schema = z.object({
     name: z
@@ -43,7 +39,6 @@ export default function ApplicationForm() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -59,9 +54,7 @@ export default function ApplicationForm() {
     `RM ${amount.toLocaleString("en-MY")}`;
 
   const buildWhatsAppMessage = (data: FormData) => {
-    const employmentLabel = t(
-      `form.employmentOptions.${data.employment}`
-    );
+    const employmentLabel = t(`form.employmentOptions.${data.employment}`);
     const amount = formatAmount(Number(data.loanAmount));
 
     if (language === "bm") {
@@ -71,42 +64,9 @@ export default function ApplicationForm() {
     return `I would like to apply for a personal loan with Gegal Utama.\n\nName: ${data.name}\nPhone: ${data.phone}\nEmployment: ${employmentLabel}\nState: ${data.state}\nAmount: ${amount}\n\nPlease contact me for further information. Thank you!`;
   };
 
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    try {
-      if (serviceId && templateId && publicKey) {
-        await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            name: data.name,
-            phone: data.phone,
-            employment: t(`form.employmentOptions.${data.employment}`),
-            state: data.state,
-            loanAmount: formatAmount(Number(data.loanAmount)),
-          },
-          publicKey
-        );
-      } else {
-        console.log("EmailJS not configured. Form data:", data);
-      }
-
-      setShowSuccess(true);
-    } catch (error) {
-      console.error("EmailJS error:", error);
-      alert(
-        language === "bm"
-          ? "Ralat berlaku. Sila cuba lagi."
-          : "An error occurred. Please try again."
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+  const onSubmit = (data: FormData) => {
+    const url = getWhatsAppUrl(buildWhatsAppMessage(data));
+    window.open(url, "_blank");
   };
 
   const inputBaseClass =
@@ -262,77 +222,12 @@ export default function ApplicationForm() {
           {/* Submit */}
           <button
             type="submit"
-            disabled={isSubmitting}
-            className={`w-full rounded-full bg-gradient-to-r from-[#FF5722] to-[#FF6F00] px-6 py-3.5 text-lg font-semibold text-white shadow-md transition-opacity hover:opacity-90 ${
-              isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-            }`}
+            className="w-full rounded-full bg-gradient-to-r from-[#FF5722] to-[#FF6F00] px-6 py-3.5 text-lg font-semibold text-white shadow-md transition-all hover:shadow-lg hover:scale-[1.02]"
           >
-            {isSubmitting ? t("form.submitting") : t("form.submit")}
+            {t("form.submit")}
           </button>
         </form>
       </motion.div>
-
-      {/* Success Modal */}
-      <AnimatePresence>
-        {showSuccess && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
-            onClick={() => setShowSuccess(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Green Checkmark */}
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                <svg
-                  className="h-8 w-8 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-
-              <h3 className="text-xl font-bold text-gray-900">
-                {t("success.title")}
-              </h3>
-              <p className="mt-2 text-gray-600">{t("success.message")}</p>
-
-              <div className="mt-6 space-y-3">
-                <a
-                  href={getWhatsAppUrl(buildWhatsAppMessage(getValues()))}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full rounded-full bg-green-600 px-6 py-3 text-center font-semibold text-white shadow hover:bg-green-700 transition-colors"
-                >
-                  {t("success.whatsapp")}
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setShowSuccess(false)}
-                  className="block w-full rounded-full bg-gray-200 px-6 py-3 text-center font-semibold text-gray-700 hover:bg-gray-300 transition-colors"
-                >
-                  {t("success.close")}
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
