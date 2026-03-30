@@ -27,7 +27,7 @@ export default function ApplicationForm() {
     phone: z
       .string()
       .min(1, t("form.errors.phoneRequired"))
-      .regex(/^0\d{1,2}-?\d{3,4}\s?\d{4}$/, t("form.errors.phoneInvalid")),
+      .regex(/^0\d{1,2}[-\s]?\d{3,4}[-\s]?\d{3,4}$/, t("form.errors.phoneInvalid")),
     employment: z.string().min(1, t("form.errors.employmentRequired")),
     state: z.string().min(1, t("form.errors.stateRequired")),
     loanAmount: z.string().min(1, t("form.errors.loanAmountRequired")),
@@ -145,7 +145,6 @@ export default function ApplicationForm() {
               className={`${inputBaseClass} ${
                 errors.employment ? inputErrorClass : inputNormalClass
               }`}
-              defaultValue=""
             >
               <option value="" disabled>
                 {t("form.employmentPlaceholder")}
@@ -173,7 +172,6 @@ export default function ApplicationForm() {
               className={`${inputBaseClass} ${
                 errors.state ? inputErrorClass : inputNormalClass
               }`}
-              defaultValue=""
             >
               <option value="" disabled>
                 {t("form.statePlaceholder")}
@@ -201,7 +199,6 @@ export default function ApplicationForm() {
               className={`${inputBaseClass} ${
                 errors.loanAmount ? inputErrorClass : inputNormalClass
               }`}
-              defaultValue=""
             >
               <option value="" disabled>
                 {t("form.loanAmountPlaceholder")}

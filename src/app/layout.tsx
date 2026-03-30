@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gegal-utama-website.vercel.app"),
   title: "Gegal Utama Sdn Bhd | Partner Kewangan Anda Yang Dipercayai",
   description:
     "Pinjaman peribadi yang mudah, pantas dan selamat. Syarikat pinjaman wang berlesen di Ipoh, Perak. Easy, fast and secure personal loans.",
@@ -52,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ms" className={`${inter.variable} h-full antialiased`}>
+    <html lang="ms" className={`${inter.variable} h-full antialiased font-sans`}>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
@@ -95,6 +96,8 @@ export default function RootLayout({
               ],
               sameAs: [
                 "https://www.facebook.com/share/14YRfB9VnEf/",
+                "https://www.instagram.com/sarah489547/",
+                "https://www.tiktok.com/@ki225674xy0",
               ],
             }),
           }}

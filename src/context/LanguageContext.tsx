@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useSyncExternalStore, ReactNode } from "react";
 
 type Language = "bm" | "en";
 
@@ -12,15 +12,19 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("bm");
+function getStoredLanguage(): Language {
+  if (typeof window === "undefined") return "bm";
+  const saved = localStorage.getItem("gegal-lang");
+  return saved === "en" ? "en" : "bm";
+}
 
-  useEffect(() => {
-    const saved = localStorage.getItem("gegal-lang") as Language | null;
-    if (saved === "bm" || saved === "en") {
-      setLanguage(saved);
-    }
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const subscribe = useCallback((cb: () => void) => {
+    window.addEventListener("storage", cb);
+    return () => window.removeEventListener("storage", cb);
   }, []);
+  const initialLang = useSyncExternalStore(subscribe, getStoredLanguage, () => "bm" as Language);
+  const [language, setLanguage] = useState<Language>(initialLang);
 
   const toggleLanguage = () => {
     setLanguage((prev) => {

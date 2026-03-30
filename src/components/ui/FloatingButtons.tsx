@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, getWhatsAppUrl } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -37,11 +37,15 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 export default function FloatingButtons() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+
+  const whatsappMsg = language === "bm"
+    ? "Saya berminat untuk tahu lebih lanjut tentang pinjaman peribadi."
+    : "I am interested to know more about personal loans.";
 
   const buttons = [
     {
-      href: "https://wa.me/601153164241?text=Saya%20berminat%20untuk%20tahu%20lebih%20lanjut%20tentang%20pinjaman%20peribadi.",
+      href: getWhatsAppUrl(whatsappMsg),
       label: t("floating.whatsapp"),
       bg: "#25D366",
       shadow: "rgba(37, 211, 102, 0.4)",

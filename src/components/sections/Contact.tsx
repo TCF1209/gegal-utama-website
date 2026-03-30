@@ -23,7 +23,11 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+
+  const whatsappMsg = language === "bm"
+    ? "Saya berminat untuk tahu lebih lanjut tentang pinjaman peribadi."
+    : "I am interested to know more about personal loans.";
 
   return (
     <section id="contact" className="py-20 px-4" style={{ backgroundColor: "#F0F7FF" }}>
@@ -56,7 +60,7 @@ export default function Contact() {
               <p className="text-gray-500">{COMPANY.phone}</p>
             </div>
             <a
-              href={getWhatsAppUrl("Saya berminat untuk tahu lebih lanjut tentang pinjaman peribadi.")}
+              href={getWhatsAppUrl(whatsappMsg)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-lg transition-transform hover:scale-105"
