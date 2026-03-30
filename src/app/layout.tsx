@@ -27,6 +27,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ms_MY",
     alternateLocale: "en_MY",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 1200,
+        alt: "Gegal Utama Sdn Bhd",
+      },
+    ],
+  },
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
   },
   robots: {
     index: true,
