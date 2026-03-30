@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { COMPANY } from "@/lib/constants";
 import { Mail, Phone, MapPin, Shield, Zap, CheckCircle } from "lucide-react";
@@ -18,10 +19,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Company Info */}
           <div>
-            <h3 className="text-xl font-bold">
-              <span className="text-[#1E88E5]">GEGAL </span>
-              <span className="text-[#FF6F00]">UTAMA</span>
-            </h3>
+            <div className="flex items-center gap-3 mb-2">
+              <Image
+                src="/images/logo.png"
+                alt="Gegal Utama Sdn Bhd"
+                width={48}
+                height={48}
+                className="h-12 w-12 object-contain"
+              />
+              <h3 className="text-xl font-bold">
+                <span className="text-[#1E88E5]">GEGAL </span>
+                <span className="text-[#FF6F00]">UTAMA</span>
+              </h3>
+            </div>
             <p className="mt-1 text-sm font-medium text-gray-600">
               {COMPANY.name}
             </p>

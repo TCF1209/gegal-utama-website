@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -35,8 +36,16 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2"
           >
-            <span className="text-xl font-bold text-[#1E88E5]">
-              GEGAL <span className="text-[#FF6F00]">UTAMA</span>
+            <Image
+              src="/images/logo.png"
+              alt="Gegal Utama Sdn Bhd"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+            />
+            <span className="text-lg font-bold leading-tight">
+              <span className="text-[#1E88E5]">GEGAL</span>{" "}
+              <span className="text-[#FF6F00]">UTAMA</span>
             </span>
           </a>
 

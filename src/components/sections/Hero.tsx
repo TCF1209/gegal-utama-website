@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, Zap, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -21,6 +22,23 @@ export default function Hero() {
   return (
     <section className="bg-white pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center">
+        {/* Logo */}
+        <motion.div
+          className="flex justify-center mb-6"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Gegal Utama Sdn Bhd"
+            width={120}
+            height={120}
+            className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 object-contain"
+            priority
+          />
+        </motion.div>
+
         {/* Headline */}
         <motion.h1
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
