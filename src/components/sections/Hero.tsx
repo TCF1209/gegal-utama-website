@@ -59,12 +59,25 @@ export default function Hero() {
           {t("hero.subheadline")}
         </motion.p>
 
+        {/* Accepted Income Banner */}
+        <motion.div
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#F0F7FF] border border-[#1E88E5]/20 px-5 py-2.5"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.22, ease: "easeOut" }}
+        >
+          <span className="text-[#1E88E5] text-lg">✓</span>
+          <p className="text-sm sm:text-base text-gray-700">
+            {t("hero.acceptedIncome")}
+          </p>
+        </motion.div>
+
         {/* CTA Buttons */}
         <motion.div
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
           <button
             onClick={() => scrollTo("#apply")}

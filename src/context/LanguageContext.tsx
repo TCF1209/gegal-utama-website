@@ -79,6 +79,8 @@ const translations: Record<Language, TranslationSet> = {
       badgeLicensed: "Berlesen",
       badgeFast: "Kelulusan Pantas",
       badgeTrusted: "Partner Dipercayai",
+      acceptedIncome:
+        "Kami menerima pelbagai sumber pendapatan termasuk Zakat, JKM, Baitulmal, PERKESO, Pencen & Peruntukan",
     },
     trust: {
       licensed: "Berlesen & Dipercayai",
@@ -268,6 +270,8 @@ const translations: Record<Language, TranslationSet> = {
       badgeLicensed: "Licensed",
       badgeFast: "Fast Approval",
       badgeTrusted: "Trusted Partner",
+      acceptedIncome:
+        "We accept various income sources including Zakat, JKM, Baitulmal, SOCSO, Pension & Allowances",
     },
     trust: {
       licensed: "Licensed & Trusted",
