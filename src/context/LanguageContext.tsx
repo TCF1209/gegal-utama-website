@@ -214,6 +214,10 @@ const translations: Record<Language, TranslationSet> = {
       emailResponse: "Balasan dalam 24 jam",
       facebook: "Ikuti Kami di Facebook",
       facebookBtn: "Lawati Facebook",
+      instagram: "Ikuti Kami di Instagram",
+      instagramBtn: "Lawati Instagram",
+      tiktok: "Ikuti Kami di TikTok",
+      tiktokBtn: "Lawati TikTok",
       visit: "Lawati Pejabat Kami",
       hours: "Waktu Operasi",
       monFri: "Isnin - Jumaat: 9:00 AM - 5:30 PM",
@@ -246,6 +250,8 @@ const translations: Record<Language, TranslationSet> = {
     floating: {
       whatsapp: "WhatsApp Kami",
       facebook: "Ikuti Kami di Facebook",
+      instagram: "Ikuti Kami di Instagram",
+      tiktok: "Ikuti Kami di TikTok",
     },
   },
   en: {
@@ -400,6 +406,10 @@ const translations: Record<Language, TranslationSet> = {
       emailResponse: "Response within 24 hours",
       facebook: "Follow Us on Facebook",
       facebookBtn: "Visit Facebook",
+      instagram: "Follow Us on Instagram",
+      instagramBtn: "Visit Instagram",
+      tiktok: "Follow Us on TikTok",
+      tiktokBtn: "Visit TikTok",
       visit: "Visit Our Office",
       hours: "Operating Hours",
       monFri: "Monday - Friday: 9:00 AM - 5:30 PM",
@@ -432,6 +442,8 @@ const translations: Record<Language, TranslationSet> = {
     floating: {
       whatsapp: "WhatsApp Us",
       facebook: "Follow Us on Facebook",
+      instagram: "Follow Us on Instagram",
+      tiktok: "Follow Us on TikTok",
     },
   },
 };

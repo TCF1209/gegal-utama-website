@@ -20,49 +20,81 @@ function FacebookIcon({ className }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.17v-3.45a4.85 4.85 0 01-3.77-1.46V6.69h3.77z" />
+    </svg>
+  );
+}
+
 export default function FloatingButtons() {
   const { t } = useLanguage();
 
+  const buttons = [
+    {
+      href: "https://wa.me/601153164241?text=Saya%20berminat%20untuk%20tahu%20lebih%20lanjut%20tentang%20pinjaman%20peribadi.",
+      label: t("floating.whatsapp"),
+      bg: "#25D366",
+      shadow: "rgba(37, 211, 102, 0.4)",
+      Icon: WhatsAppIcon,
+    },
+    {
+      href: COMPANY.facebook,
+      label: t("floating.facebook"),
+      bg: "#1877F2",
+      shadow: "rgba(24, 119, 242, 0.4)",
+      Icon: FacebookIcon,
+    },
+    {
+      href: COMPANY.instagram,
+      label: t("floating.instagram"),
+      bg: "#E4405F",
+      shadow: "rgba(228, 64, 95, 0.4)",
+      Icon: InstagramIcon,
+    },
+    {
+      href: COMPANY.tiktok,
+      label: t("floating.tiktok"),
+      bg: "#000000",
+      shadow: "rgba(0, 0, 0, 0.3)",
+      Icon: TikTokIcon,
+    },
+  ];
+
   return (
     <motion.div
-      className="fixed right-5 bottom-5 z-50 flex flex-col gap-4"
+      className="fixed right-4 bottom-4 z-50 flex flex-col gap-3"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
     >
-      {/* WhatsApp Button */}
-      <motion.a
-        href="https://wa.me/601153164241?text=Saya%20berminat%20untuk%20tahu%20lebih%20lanjut%20tentang%20pinjaman%20peribadi."
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("floating.whatsapp")}
-        className="w-14 h-14 rounded-full flex items-center justify-center"
-        style={{
-          backgroundColor: "#25D366",
-          boxShadow: "0 4px 14px rgba(37, 211, 102, 0.4)",
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      >
-        <WhatsAppIcon className="w-7 h-7" />
-      </motion.a>
-
-      {/* Facebook Button */}
-      <motion.a
-        href={COMPANY.facebook}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("floating.facebook")}
-        className="w-14 h-14 rounded-full flex items-center justify-center"
-        style={{
-          backgroundColor: "#1877F2",
-          boxShadow: "0 4px 14px rgba(24, 119, 242, 0.4)",
-        }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      >
-        <FacebookIcon className="w-7 h-7" />
-      </motion.a>
+      {buttons.map((btn) => (
+        <motion.a
+          key={btn.label}
+          href={btn.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={btn.label}
+          className="w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center"
+          style={{
+            backgroundColor: btn.bg,
+            boxShadow: `0 4px 14px ${btn.shadow}`,
+          }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          <btn.Icon className="w-6 h-6 lg:w-7 lg:h-7" />
+        </motion.a>
+      ))}
     </motion.div>
   );
 }

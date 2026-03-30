@@ -5,6 +5,8 @@ export const COMPANY = {
   email: "gegalutama@gmail.com",
   address: "162A, Jalan Tasek Timur, Taman Tasek Indra, 31400 Ipoh, Perak",
   facebook: "https://www.facebook.com/share/14YRfB9VnEf/",
+  instagram: "https://www.instagram.com/sarah489547/",
+  tiktok: "https://www.tiktok.com/@ki225674xy0",
   mapEmbed:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.5!2d101.09!3d4.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2smy!4v1",
   mapLink:
