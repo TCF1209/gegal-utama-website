@@ -143,10 +143,19 @@ export default function Footer() {
       <div className="border-t border-gray-200 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-            <p>
-              &copy; 2025 {COMPANY.name}.{" "}
-              {t("footer.copyright")}
-            </p>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/images/logo.png"
+                alt="Gegal Utama"
+                width={24}
+                height={24}
+                className="h-6 w-6 object-contain"
+              />
+              <p>
+                &copy; 2025 {COMPANY.name}.{" "}
+                {t("footer.copyright")}
+              </p>
+            </div>
             <div className="flex gap-4">
               <span>{t("footer.terms")}</span>
               <span>{t("footer.privacy")}</span>
