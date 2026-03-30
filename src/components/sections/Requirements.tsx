@@ -9,7 +9,6 @@ const eligibilityItems = [
   "requirements.el2",
   "requirements.el3",
   "requirements.el4",
-  "requirements.el5",
 ];
 
 const documentItems = [
