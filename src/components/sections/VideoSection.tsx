@@ -69,7 +69,7 @@ export default function VideoSection() {
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
               >
-                <source src="/videos/promo.mp4" type="video/mp4" />
+                <source src="/videos/latest_video.mp4" type="video/mp4" />
               </video>
 
               {/* Play button overlay */}
